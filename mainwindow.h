@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include "map.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,6 +18,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void initScene();
+
+    void playGame();
+
+    void updatePos();
+
+    void paintEvent(QPaintEvent*);
+
+    Map map;
+
+    QTimer timer;//定时器
 
 private:
     Ui::MainWindow *ui;
