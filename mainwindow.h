@@ -7,6 +7,8 @@
 #include "myplane.h"
 #include <QMouseEvent>
 #include "bullet.h"
+#include "enemyplane.h"
+#include "bomb.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,6 +33,16 @@ public:
     void paintEvent(QPaintEvent*);
 
     void mouseMoveEvent(QMouseEvent*);
+
+    void eneEmerge();
+
+    void colliDetect();
+
+    EnemyPlane enemies[ENE_NUM];
+
+    Bomb bombs[BOMB_NUM];
+
+    int eneRecorder;
 
     Map map;
 

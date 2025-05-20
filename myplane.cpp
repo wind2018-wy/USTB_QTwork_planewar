@@ -23,7 +23,7 @@ void MyPlane::shoot()
         return;
     recorder=0;
     for(int i=0;i<BULLET_NUM;i++){
-        if(bullets[i].free==true){
+        if(bullets[i].free){
             bullets[i].x=x+(rect.width()-bullets[i].myRect1.width())*0.5;
             bullets[i].y=y;
             bullets[i].free=false;

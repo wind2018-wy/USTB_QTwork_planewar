@@ -17,7 +17,10 @@
 #define MY_PLANE_PATH ":/picture/my_plane_1"
 
 
-#define ENE_PLANE_SPEED 3
+#define ENE_PLANE_PATH ":/picture/ene_plane_1"
+#define ENE_NUM 20
+#define ENE_INTERVAL 30
+#define ENE_PLANE_SPEED 5
 
 //子弹配置
 #define MY_BULLET_PATH ":/picture/bullet_1"
@@ -35,4 +38,9 @@
 #define BULLET_NUM 30
 #define BULLET_INTERVAL 20
 
+//爆炸效果
+#define BOMB_PATH ":/picture/explo_1_%1"
+#define BOMB_NUM 20//爆炸数量
+#define BOMB_MAX 4//爆炸图片最大索引
+#define BOMB_INTERVAL 20//爆炸切图时间间隔
 #endif // CONFIG_H
