@@ -3,6 +3,8 @@
 #include "config.h"
 #include <QIcon>
 #include <QPainter>
+#include <QMouseEvent>
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -46,4 +48,22 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(0,map.map2_posY,map.map2);
 
     painter.drawPixmap(myPlane.x,myPlane.y,myPlane.plane);
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent * event)
+{
+    int x=event->x()-myPlane.rect.width()*0.5;
+    int y=event->y()-myPlane.rect.height()*0.5;
+
+    if(x<=0){
+        x=0;
+    }
+    if(x>=GAME_WIDTH-myPlane.rect.width())
+        x=GAME_WIDTH-myPlane.rect.width();
+    if(y<= 0)
+        y=0;
+    if(y >= GAME_HEIGHT -myPlane.rect.height())
+        y=GAME_HEIGHT-myPlane.rect.height();
+
+    myPlane.setPosition(x,y);
 }

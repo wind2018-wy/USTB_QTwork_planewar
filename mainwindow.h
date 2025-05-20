@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "map.h"
 #include "myplane.h"
+#include <QMouseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,6 +28,8 @@ public:
     void updatePos();
 
     void paintEvent(QPaintEvent*);
+
+    void mouseMoveEvent(QMouseEvent*);
 
     Map map;
 
