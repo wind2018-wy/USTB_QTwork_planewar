@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "map.h"
+#include "myplane.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,6 +29,8 @@ public:
     void paintEvent(QPaintEvent*);
 
     Map map;
+
+    MyPlane myPlane;
 
     QTimer timer;//定时器
 

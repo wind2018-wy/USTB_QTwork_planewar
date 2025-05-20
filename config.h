@@ -14,4 +14,8 @@
 #define MAP1_PATH ":/picture/game_map_1"
 #define MAP_SCROLL_SPEED 2
 
+
+//飞机配置
+#define MY_PLANE_PATH ":/picture/my_plane_1"
+
 #endif // CONFIG_H

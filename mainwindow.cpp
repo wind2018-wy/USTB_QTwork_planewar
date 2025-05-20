@@ -44,4 +44,6 @@ void MainWindow::paintEvent(QPaintEvent *)
     QPainter painter(this);
     painter.drawPixmap(0,map.map1_posY,map.map1);
     painter.drawPixmap(0,map.map2_posY,map.map2);
+
+    painter.drawPixmap(myPlane.x,myPlane.y,myPlane.plane);
 }
