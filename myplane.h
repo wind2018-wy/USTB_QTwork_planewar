@@ -3,6 +3,8 @@
 
 #include <QPixmap>
 #include <QRect>
+#include "config.h"
+#include "bullet.h"
 
 class MyPlane
 {
@@ -16,6 +18,9 @@ public:
     int x,y;
 
     QRect rect;//矩形边框
+
+    Bullet bullets[BULLET_NUM];
+    int recorder;//发射间隔记录
 };
 
 #endif // MYPLANE_H

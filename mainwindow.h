@@ -6,6 +6,7 @@
 #include "map.h"
 #include "myplane.h"
 #include <QMouseEvent>
+#include "bullet.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -36,6 +37,8 @@ public:
     MyPlane myPlane;
 
     QTimer timer;//定时器
+
+    //Bullet temp_Bullet;
 
 private:
     Ui::MainWindow *ui;

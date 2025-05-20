@@ -3,11 +3,8 @@
         <file>picture/game_map_1.jpg</file>
         <file>picture/game_map_2.jpg</file>
         <file>picture/bullet_1.jpg</file>
-        <file>picture/bullet_1r.jpg</file>
         <file>picture/bullet_2.jpg</file>
-        <file>picture/bullet_2r.jpg</file>
         <file>picture/bullet_3.jpg</file>
-        <file>picture/bullet_3r.jpg</file>
         <file>picture/ene_plane_1.jpg</file>
         <file>picture/ene_plane_2.png</file>
         <file>picture/explo_1_1.png</file>
@@ -15,5 +12,8 @@
         <file>picture/explo_1_3.png</file>
         <file>picture/explo_1_4.png</file>
         <file>picture/my_plane_1.jpg</file>
+        <file>picture/bullet_1r.jpg</file>
+        <file>picture/bullet_2r.jpg</file>
+        <file>picture/bullet_3r.jpg</file>
     </qresource>
 </RCC>

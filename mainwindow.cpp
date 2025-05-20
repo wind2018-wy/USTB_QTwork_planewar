@@ -39,6 +39,16 @@ void MainWindow::playGame()
 void MainWindow::updatePos()
 {
     map.mapPosition();
+
+    myPlane.shoot();
+
+    for(int i=0;i<BULLET_NUM;i++){
+        if(myPlane.bullets[i].free==false){
+            myPlane.bullets[i].updatePosition();
+        }
+    }
+    // temp_Bullet.free=false;
+    // temp_Bullet.updatePosition();
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -48,6 +58,13 @@ void MainWindow::paintEvent(QPaintEvent *)
     painter.drawPixmap(0,map.map2_posY,map.map2);
 
     painter.drawPixmap(myPlane.x,myPlane.y,myPlane.plane);
+
+    for(int i=0;i<BULLET_NUM;i++){
+        if(myPlane.bullets[i].free==false){
+            painter.drawPixmap(myPlane.bullets[i].x,myPlane.bullets[i].y,myPlane.bullets[i].myBullet1);
+        }
+    }
+    //painter.drawPixmap(temp_Bullet.x,temp_Bullet.y,temp_Bullet.myBullet1);
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent * event)
