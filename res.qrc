@@ -15,5 +15,7 @@
         <file>picture/bullet_1r.jpg</file>
         <file>picture/bullet_2r.jpg</file>
         <file>picture/bullet_3r.jpg</file>
+        <file>picture/BGmusic.wav</file>
+        <file>picture/BombM.wav</file>
     </qresource>
 </RCC>

@@ -20,7 +20,7 @@ public:
 
     bool free;//子弹是否闲置
 
-    QRect myRect1,myRect2,myRext3;
+    QRect myRect1,myRect2,myRect3;
     QRect eneRect1;
 };
 

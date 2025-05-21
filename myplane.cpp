@@ -1,5 +1,6 @@
 #include "myplane.h"
 #include "config.h"
+#include <QDebug>
 
 MyPlane::MyPlane() {
     plane.load(MY_PLANE_PATH);
@@ -14,19 +15,41 @@ MyPlane::MyPlane() {
     rect.setWidth(plane.width());
     rect.setHeight(plane.height());
     rect.moveTo(x,y);
+    for(int i=0;i<BULLET_NUM;i++){
+        bullets1[i].free=true;
+        bullets2[i].free=true;
+        bullets3[i].free=true;
+    }
 }
 
 void MyPlane::shoot()
 {
+    qDebug()<<"fashe";
     recorder++;
     if(recorder<BULLET_INTERVAL)
         return;
     recorder=0;
     for(int i=0;i<BULLET_NUM;i++){
-        if(bullets[i].free){
-            bullets[i].x=x+(rect.width()-bullets[i].myRect1.width())*0.5;
-            bullets[i].y=y;
-            bullets[i].free=false;
+        if(bullets1[i].free){
+            bullets1[i].x=x+(rect.width()-bullets1[i].myRect1.width())*0.5;
+            bullets1[i].y=y;
+            bullets1[i].free=false;
+            break;
+        }
+    }
+    for(int i=0;i<BULLET_NUM;i++){
+        if(bullets2[i].free){
+            bullets2[i].x=x;
+            bullets2[i].y=y;
+            bullets2[i].free=false;
+            break;
+        }
+    }
+    for(int i=0;i<BULLET_NUM;i++){
+        if(bullets3[i].free){
+            bullets3[i].x=x+(rect.width()-bullets3[i].myRect3.width());
+            bullets3[i].y=y;
+            bullets3[i].free=false;
             break;
         }
     }

@@ -43,4 +43,8 @@
 #define BOMB_NUM 20//爆炸数量
 #define BOMB_MAX 4//爆炸图片最大索引
 #define BOMB_INTERVAL 20//爆炸切图时间间隔
+
+//音效
+#define SOUND_BACKGROUND ":/picture/BGmusic.wav"
+#define SOUND_BOMB ":/picture/BombM.wav"
 #endif // CONFIG_H

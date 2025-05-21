@@ -2,13 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTimer>
-#include "map.h"
-#include "myplane.h"
-#include <QMouseEvent>
-#include "bullet.h"
-#include "enemyplane.h"
-#include "bomb.h"
+#include "gamewd.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,35 +17,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-    void initScene();
-
-    void playGame();
-
-    void updatePos();
-
-    void paintEvent(QPaintEvent*);
-
-    void mouseMoveEvent(QMouseEvent*);
-
-    void eneEmerge();
-
-    void colliDetect();
-
-    EnemyPlane enemies[ENE_NUM];
-
-    Bomb bombs[BOMB_NUM];
-
-    int eneRecorder;
-
-    Map map;
-
-    MyPlane myPlane;
-
-    QTimer timer;//定时器
-
-    //Bullet temp_Bullet;
-
+    GameWD game;
+private slots:
+    void on_GameStart_clicked();
+signals:
+    void showGameWD();
 private:
     Ui::MainWindow *ui;
 };
