@@ -67,7 +67,6 @@ void GameWD::updatePos()
 
     myPlane.shoot();
 
-    qDebug()<<myPlane.bullets[0].y;
 
     for(int i=0;i<BULLET_NUM;i++){
         if(myPlane.bullets[i].free==false){
