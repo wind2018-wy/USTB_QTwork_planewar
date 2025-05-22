@@ -27,7 +27,6 @@ Bullet::Bullet() {
 
 void Bullet::updatePosition()
 {
-    qDebug()<<"更新坐标";
     if(free)
         return;
     y-=MY_BULLET_SPEED;
