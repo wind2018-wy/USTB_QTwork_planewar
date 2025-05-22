@@ -5,7 +5,7 @@
 MyPlane::MyPlane() {
     plane.load(MY_PLANE_PATH);
     QSize specificSize(80, 60);
-
+    recorder=0;
     QPixmap scaledPixmap = plane.scaled(specificSize, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     plane=scaledPixmap;
 
