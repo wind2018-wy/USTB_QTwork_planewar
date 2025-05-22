@@ -11,17 +11,17 @@ public:
 
     void updatePosition();
 public:
-    QPixmap myBullet1,myBullet2,myBullet3;
-    QPixmap eneBullet1;
+    QPixmap myBullet;
+    QPixmap eneBullet;
 
     int x,y;
 
     int speed;
 
-    bool free;//子弹是否闲置
+    bool free;
 
-    QRect myRect1,myRect2,myRect3;
-    QRect eneRect1;
+    QRect myRect;
+    QRect eneRect;
 };
 
 #endif // BULLET_H

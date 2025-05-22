@@ -37,6 +37,8 @@ public:
 
     void colliDetect();
 
+    bool isFinish;
+
     EnemyPlane enemies[ENE_NUM];
 
     Bomb bombs[BOMB_NUM];

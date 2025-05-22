@@ -14,12 +14,11 @@ GameWD::GameWD(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::GameWD)
 {
+    isFinish=false;
     connect(this,&GameWD::showFinish,&finisha,&Finish::recvFinishSlot);
     ui->setupUi(this);
     for(int i=0;i<BULLET_NUM;i++){
-        myPlane.bullets1[i].free=true;
-        myPlane.bullets2[i].free=true;
-        myPlane.bullets3[i].free=true;
+        myPlane.bullets[i].free=true;
     }
     initScene();
 }
@@ -50,9 +49,7 @@ void GameWD::playGame()
     (*soundEffect).play();
 
     for(int i=0;i<BULLET_NUM;i++){
-        myPlane.bullets1[i].free=true;
-        myPlane.bullets2[i].free=true;
-        myPlane.bullets3[i].free=true;
+        myPlane.bullets[i].free=true;
     }
 
     timer.start();
@@ -70,15 +67,11 @@ void GameWD::updatePos()
 
     myPlane.shoot();
 
+    qDebug()<<myPlane.bullets[0].y;
+
     for(int i=0;i<BULLET_NUM;i++){
-        if(!myPlane.bullets1[i].free){
-            myPlane.bullets1[i].updatePosition();
-        }
-        if(!myPlane.bullets2[i].free){
-            myPlane.bullets2[i].updatePosition();
-        }
-        if(!myPlane.bullets3[i].free){
-            myPlane.bullets3[i].updatePosition();
+        if(myPlane.bullets[i].free==false){
+            myPlane.bullets[i].updatePosition();
         }
     }
 
@@ -106,14 +99,8 @@ void GameWD::paintEvent(QPaintEvent *)
     painter.drawPixmap(myPlane.x,myPlane.y,myPlane.plane);
 
     for(int i=0;i<BULLET_NUM;i++){
-        if(!myPlane.bullets1[i].free){
-            painter.drawPixmap(myPlane.bullets1[i].x,myPlane.bullets1[i].y,myPlane.bullets1[i].myBullet1);
-        }
-        if(!myPlane.bullets2[i].free){
-            painter.drawPixmap(myPlane.bullets2[i].x,myPlane.bullets2[i].y,myPlane.bullets2[i].myBullet2);
-        }
-        if(!myPlane.bullets3[i].free){
-            painter.drawPixmap(myPlane.bullets3[i].x,myPlane.bullets3[i].y,myPlane.bullets3[i].myBullet3);
+        if(!myPlane.bullets[i].free){
+            painter.drawPixmap(myPlane.bullets[i].x,myPlane.bullets[i].y,myPlane.bullets[i].myBullet);
         }
     }
 
@@ -172,46 +159,20 @@ void GameWD::colliDetect()
             continue;
         if(enemies[i].rect.intersects(myPlane.rect)){
             emit showFinish(score);
-            this->hide();
+            this->close();
             break;
         }
         for(int j=0;j<BULLET_NUM;j++){
-            if(myPlane.bullets1[j].free&&myPlane.bullets2[j].free&&myPlane.bullets3[j].free)
+            if(myPlane.bullets[j].free)
                 continue;
-            if(myPlane.bullets1[j].myRect1.intersects(enemies[i].rect)){
+            if(myPlane.bullets[j].myRect.intersects(enemies[i].rect)){
                 // QSoundEffect *soundEffect=new QSoundEffect;
                 // QUrl BKMurl=QUrl::fromLocalFile(QString::fromUtf8(SOUND_BOMB));
                 // (*soundEffect).setSource(BKMurl);
                 // soundEffect->setLoopCount(1);
                 // (*soundEffect).play();
                 score++;
-                myPlane.bullets1[j].free=true;
-                enemies[i].free=true;
-                for(int k=0;k<BOMB_NUM;k++){
-                    if(bombs[k].free){
-                        bombs[k].free=false;
-                        bombs[k].x=enemies[i].x;
-                        bombs[k].y=enemies[i].y;
-                        break;
-                    }
-                }
-            }
-            if(myPlane.bullets2[j].myRect1.intersects(enemies[i].rect)){
-                score++;
-                myPlane.bullets2[j].free=true;
-                enemies[i].free=true;
-                for(int k=0;k<BOMB_NUM;k++){
-                    if(bombs[k].free){
-                        bombs[k].free=false;
-                        bombs[k].x=enemies[i].x;
-                        bombs[k].y=enemies[i].y;
-                        break;
-                    }
-                }
-            }
-            if(myPlane.bullets3[j].myRect1.intersects(enemies[i].rect)){
-                score++;
-                myPlane.bullets3[j].free=true;
+                myPlane.bullets[j].free=true;
                 enemies[i].free=true;
                 for(int k=0;k<BOMB_NUM;k++){
                     if(bombs[k].free){

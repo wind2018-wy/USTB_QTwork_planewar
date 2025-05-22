@@ -19,9 +19,7 @@ public:
 
     QRect rect;//矩形边框
 
-    Bullet bullets1[BULLET_NUM];
-    Bullet bullets2[BULLET_NUM];
-    Bullet bullets3[BULLET_NUM];
+    Bullet bullets[BULLET_NUM];
     int recorder;//发射间隔记录
 };
 
